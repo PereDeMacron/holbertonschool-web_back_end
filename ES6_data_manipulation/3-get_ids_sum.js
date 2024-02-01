@@ -1,9 +1,3 @@
-const getStudentIdsSum = (id, students) => {
-  const StudentIdsSum = students.filter(
-    (student) => student.id === id
-  );
-
-  return StudentIdsSum;
-};
+const getStudentIdsSum = (list) => list.reduce((total, student) => total + student.id, 0);
 
 export default getStudentIdsSum;
