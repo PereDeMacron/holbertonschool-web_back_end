@@ -1,6 +1,6 @@
 const updateUniqueItems = (map) => {
   if (!(map instanceof Map)) {
-    throw new Error("Cannot process");
+    throw new Error('Cannot process');
   }
 
   for (const [key, value] of map) {
