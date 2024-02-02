@@ -1,7 +1,14 @@
-const updateStudentGradeByCity = (id, students) => {
-  const getListStudents = students.filter.map((student) => student.id === id);
+function updateStudentGradeByCity(students, city, newGrades) {
+  return students
+    .filter(student => student.location === city)
+    .map(student => {
+      const matchingGrade = newGrades.find(grade => grade.studentId === student.id);
 
-  return getListStudents;
-};
+      return {
+        ...student,
+        grade: matchingGrade ? matchingGrade.grade : 'N/A',
+      };
+    });
+}
 
-export default getStudentIdsSum;
+export default updateStudentGradeByCity;
