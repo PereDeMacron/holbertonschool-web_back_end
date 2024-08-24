@@ -1,18 +1,20 @@
 #!/usr/bin/env python3
-
+""" Async comprenhesion gen """
 import asyncio
 from typing import List
-async_generator = __import__('0-basic_async_syntax').async_generator
 
-"""
-import async_generator from the previous task
-"""
+
+async_generator = __import__('0-async_generator').async_generator
+
 
 async def async_comprehension() -> List[float]:
     """
-    10 random numbers using the async_generator.
+        Generate numbers with async comprenhension
 
-    Returns:
-        List: 10 random numbers.
+        Args:
+            void
+
+        Return:
+            float random numbers
     """
-    return [i async for i in async_generator()]
+    return ([i async for i in async_generator()])
