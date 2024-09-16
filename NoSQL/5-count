@@ -1,2 +1,2 @@
-//Task 5
-db.school.count()
+// script that displays the number of documents in the collection school.
+db.school.countDocuments({})

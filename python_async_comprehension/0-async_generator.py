@@ -1,13 +1,20 @@
 #!/usr/bin/env python3
-"""Task 0: Asynchronous Generator"""
-
+""" Async Generator """
 import asyncio
-from random import uniform
+import random
 from typing import Generator
 
 
 async def async_generator() -> Generator[float, None, None]:
-    """Generate 10 random"""
-    for i in range(10):
+    """
+        Generate numbers
+
+        Args:
+            void
+
+        Return:
+            float time random
+    """
+    for _ in range(10):
         await asyncio.sleep(1)
-        yield uniform(0, 10)
+        yield random.uniform(0, 10)

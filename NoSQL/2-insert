@@ -1,2 +1,4 @@
-//Task 2
-db.school.insert({name : "Holberton school" })
+// script that lists all documents in the collection school.
+db.school.insert({
+    name: "Holberton school"
+})

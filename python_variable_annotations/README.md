@@ -1,2 +1,1 @@
-to do list:
-README.md
+## Python - Variable Annotations
