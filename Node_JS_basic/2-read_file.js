@@ -1,47 +1,30 @@
-// task 2
 const fs = require('fs');
 
-function countStudents(filePath) {
+module.exports = function countStudents(filename) {
   try {
-    const data = fs.readFileSync(filePath, 'utf-8');
-    
-    const lines = data.split('\n');
-    
-    const validLines = lines.filter(line => line.trim() !== '');
-    
-    if (validLines.length <= 1) {
-      throw new Error('Cannot load the database');
-    }
-    
-    const totalStudents = validLines.length - 1;
-    console.log(`Number of students: ${totalStudents}`);
-    
-    const fields = {};
 
-    for (let i = 1; i < validLines.length; i++) {
-      const studentInfo = validLines[i].split(',');
+    const data = fs.readFileSync(filename, 'utf-8');
+    const rows = data.split('\n').slice(1);
 
-      if (studentInfo.length !== 4) continue;
+    const studentsCS = [];
+    const studentsSWE = [];
 
-      const firstname = studentInfo[0];
-      const field = studentInfo[3];
+    for (const row of rows) {
+      const data = row.split(',');
 
-      if (!fields[field]) {
-        fields[field] = [];
+      if (data[3] === 'CS') { // hardcode
+        studentsCS.push(data[0]);
       }
 
-      fields[field].push(firstname);
+      if (data[3] === 'SWE') { // hardcode
+        studentsSWE.push(data[0]);
+      }
     }
 
-    for (const field in fields) {
-      const studentsInField = fields[field];
-      console.log(
-        `Number of students in ${field}: ${studentsInField.length}. List: ${studentsInField.join(', ')}`
-      );
-    }
-  } catch (err) {
-    console.error('Cannot load the database');
+    console.log(`Number of students: ${studentsCS.length + studentsSWE.length}`);
+    console.log(`Number of students in CS: ${studentsCS.length}. List: ${studentsCS.join(', ')}`);
+    console.log(`Number of students in SWE: ${studentsSWE.length}. List: ${studentsSWE.join(', ')}`);
+  } catch (error) {
+    throw new Error('Cannot load the database');
   }
-}
-
-module.exports = countStudents;
+};
