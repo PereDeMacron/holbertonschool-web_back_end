@@ -1,6 +1,4 @@
 // task 0
-function displayMessage(string) {
-  console.log(string);
-}
-
-module.exports = displayMessage;
+module.exports = function displayMessage(text) {
+  console.log(text);
+};
