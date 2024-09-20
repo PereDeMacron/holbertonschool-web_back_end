@@ -1,3 +1,4 @@
+// task 2
 const fs = require('fs');
 
 function countStudents(filePath) {
